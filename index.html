@@ -14,6 +14,10 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             line-height: 1.6;
             background: #ffffff;
@@ -71,6 +75,9 @@
             min-height: 100vh;
             gap: 40px;
             margin-top: 40px;
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            padding: 60px 40px;
+            border-radius: 20px;
         }
 
         .hero-text h1 {
@@ -102,6 +109,8 @@
 
         .btn:hover {
             background: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .btn-secondary {
@@ -154,9 +163,14 @@
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             font-weight: 600;
             border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
         }
 
         /* PROJECTS */
@@ -177,8 +191,8 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
         }
 
@@ -214,6 +228,17 @@
             padding: 20px;
             border-top: 1px solid #e2e8f0;
             margin-top: 40px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media(max-width: 768px) {
@@ -261,7 +286,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="about">
+    <section id="about" class="about hidden">
         <h2>About Me</h2>
         <p>
             I am Akwue Kingsley Chukwuebuka, a creative digital media professional and Master's student in Interactive
@@ -273,7 +298,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills hidden">
         <h2>My Skills</h2>
         <div class="skill-grid">
             <div class="skill-card">HTML</div>
@@ -288,7 +313,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects hidden">
         <h2>My Projects (Coming Soon)</h2>
         <div class="project-grid">
             <div class="project-card">
@@ -320,7 +345,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact hidden">
         <h2>Contact Me</h2>
         <p><strong>Name:</strong> Akwue Kingsley Chukwuebuka</p>
         <p><strong>Location:</strong> Dublin, Ireland</p>
@@ -333,6 +358,17 @@
     <footer>
         <p>© 2026 Akwue Kingsley Chukwuebuka | Interactive Digital Media Portfolio</p>
     </footer>
+    <script>
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 
