@@ -270,19 +270,27 @@
 
             .menu-toggle {
                 display: block;
+                font-size: 28px;
+                cursor: pointer;
             }
 
             .nav-links {
                 position: absolute;
                 top: 70px;
-                right: 0;
+                right: 20px;
                 background: white;
                 width: 200px;
                 flex-direction: column;
                 align-items: center;
-                display: none;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+
+                transition: all 0.2s ease;
             }
 
             .nav-links a {
@@ -290,7 +298,9 @@
             }
 
             .nav-links.active {
-                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
             }
 
             .hero {
@@ -301,6 +311,7 @@
             .hero img {
                 width: 250px;
             }
+
         }
     </style>
 </head>
